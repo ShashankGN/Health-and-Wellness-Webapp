@@ -1,0 +1,137 @@
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" routerLink="">FITNET</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" routerLink="">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link btn btn-outline-light" routerLink="login">Sign Up</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container-fluid hero-section text-center">
+        <div class="container">
+            <h1>Create Your Account</h1>
+            <p>Join FITNET and start your journey towards a healthier lifestyle.</p>
+        </div>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div class="container form-container">
+        <h2>Sign Up</h2>
+        <div *ngIf="userFailed" class="alert alert-danger" style="text-align: center;">User already exists!</div>
+        <div *ngIf="passwordFailed" class="alert alert-danger" style="text-align: center;">Password must contain atleast 8 characters,including one uppercase, one special character and one digit!</div>
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()" class="form-signup">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input 
+                type="text" 
+                formControlName="fullname"
+                class="form-control" 
+                id="fullName" 
+                placeholder="Enter your full name"
+                autofocus/>
+                <div *ngIf="signUpForm.get('fullname')?.invalid && signUpForm.get('fullname')?.touched" class="text-danger">
+                    Fullname is required
+                  </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="userName">Username</label>
+                <input 
+                type="text"
+                formControlName="username"
+                class="form-control" 
+                id="userName" 
+                placeholder="Choose a username">
+                <div *ngIf="signUpForm.get('username')?.invalid && signUpForm.get('username')?.touched" class="text-danger">
+                    Username is required
+                  </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input 
+                type="email" 
+                formControlName="email"
+                class="form-control" 
+                id="email" 
+                placeholder="Enter your email">
+                <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched" class="text-danger">
+                    Email is required
+                  </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input 
+                type="password" 
+                class="form-control" 
+                formControlName="password"
+                id="password" 
+                placeholder="Enter your password">
+                <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched" class="text-danger">
+                    Password is required
+                  </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input 
+                type="number" 
+                formControlName="age"
+                class="form-control" 
+                id="age" 
+                placeholder="Enter your age">
+                <div *ngIf="signUpForm.get('age')?.invalid && signUpForm.get('age')?.touched" class="text-danger">
+                    Age is required
+                  </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" formControlName="gender" >
+                    <option value="" disabled selected>Select your gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div *ngIf="signUpForm.get('gender')?.invalid && signUpForm.get('gender')?.touched" class="text-danger">
+                    Gender is required
+                  </div>
+            </div>
+            
+            <!-- <button type="submit" class="btn btn-primary mt-4">Sign Up</button> -->
+            <button type="submit" class="btn btn-primary mt-4" [disabled]="signUpForm.invalid">Sign Up</button>
+            <div class="login-link mt-3">
+                <p>Already an existing user? <a routerLink="/login">Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer text-center">
+        <div class="container">
+            <p>&copy; 2024 FITNET. All Rights Reserved.</p>
+            <div>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</body>

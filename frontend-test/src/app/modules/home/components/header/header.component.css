@@ -1,0 +1,170 @@
+/* nav {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+}
+.navbar {
+    background-color: #2d4059;
+}
+.navbar-brand, .nav-link {
+    color: #f4f6f8 !important;
+}
+.nav-link.btn {
+    color: #ea5455 !important;
+    border: 2px solid #ea5455;
+}
+.nav-link.btn:hover {
+    background-color: #ea5455;
+    color: #fff !important;
+}
+.btn-primary {
+    background-color: #ea5455;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #d43f40;
+} */
+
+
+.navbar {
+    background-color: #2d4059;
+}
+.navbar-brand, .nav-link {
+    color: #f4f6f8 !important;
+}
+.nav-link.btn {
+    color: #ea5455 !important;
+    border: 2px solid #ea5455;
+}
+.nav-link.btn:hover {
+    background-color: #ea5455;
+    color: #fff !important;
+}
+
+.nav-link i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+
+/* Dropdown Menu Styling */
+.navbar-nav .nav-item .dropdown-menu {
+    background-color: #2d4059; /* Dark background for the dropdown */
+    border: 1px solid #495057; /* Border color */
+    border-radius: .375rem; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    min-width: 160px; /* Minimum width for dropdown */
+}
+
+/* Dropdown Item Styling */
+.navbar-nav .nav-item .dropdown-item {
+    color: #f8f9fa; /* Light text color */
+    /* font-size: 14px; Font size for items */
+    padding: 0.5rem 1rem; /* Padding for items */
+}
+
+.navbar-nav .nav-item .dropdown-item:hover {
+    background-color: #495057; /* Background color on hover */
+    color: #ffffff; /* Text color on hover */
+}
+
+/* More Icon Styling */
+.navbar-nav .nav-item .dropdown-toggle {
+    color: #f8f9fa; /* Light color for the icon/text */
+    /* font-size: 18px;  */
+    display: flex;
+    align-items: center;
+}
+
+/* .navbar-nav .nav-item .dropdown-toggle::after {
+    display: none; 
+} */
+
+.navbar-nav .nav-item .dropdown-toggle:hover {
+    color: #bfc5ca; /* Lighter color on hover */
+}
+
+.navbar-nav .nav-item .dropdown-toggle .fa-ellipsis-v {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+
+
+
+/* Modal Background and Content */
+.modal-dialog {
+    max-width: 800px; /* Adjust the max width as needed */
+}
+
+.modal-content {
+    border-radius: .375rem; /* Match the rounded corners */
+    border: 1px solid #495057; /* Border color */
+    background-color: #f4f6f8; /* Light background for the modal */
+}
+
+/* Modal Header */
+.modal-header {
+    background-color: #2d4059; /* Dark background */
+    color: #f4f6f8; /* Light text color */
+    border-bottom: 1px solid #495057; /* Border for header */
+}
+
+.modal-title {
+    font-size: 1.25rem; /* Adjust font size if needed */
+}
+
+/* Close Button in Header */
+.modal-header .btn-close {
+    filter: invert(1); /* Light color for the close button */
+}
+
+/* Modal Body */
+.modal-body {
+    color: #333; /* Dark text color */
+}
+
+/* Form Styling */
+.form-label {
+    color: #2d4059; /* Dark color for labels */
+    font-weight: bold; /* Make labels bold */
+}
+
+.form-control {
+    border-radius: .375rem; /* Match rounded corners */
+    border: 1px solid #ccc; /* Light border for inputs */
+}
+
+.form-control:focus {
+    border-color: #ea5455; /* Highlight border color */
+    box-shadow: 0 0 0 .2rem rgba(234, 84, 85, .25); /* Input shadow on focus */
+}
+
+.btn-primary {
+    background-color: #ea5455; /* Primary button background */
+    border: none; /* Remove border */
+    color: #fff; /* White text color */
+}
+
+.btn-primary:hover {
+    background-color: #d43f40; /* Darker shade on hover */
+    color: #fff; /* Ensure text remains white */
+}
+
+.btn-secondary {
+    background-color: #495057; /* Secondary button background */
+    border: none; /* Remove border */
+    color: #f4f6f8; /* Light text color */
+}
+
+.btn-secondary:hover {
+    background-color: #343a40; /* Darker shade on hover */
+    color: #f4f6f8; /* Ensure text remains light */
+}
+
+/* Modal Footer */
+.modal-footer {
+    border-top: 1px solid #495057; /* Border for footer */
+}
+
+.modal-footer .btn {
+    border-radius: .375rem; /* Match rounded corners */
+}

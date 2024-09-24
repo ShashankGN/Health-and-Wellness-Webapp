@@ -1,0 +1,49 @@
+<!-- <p>targetcaloriemodal works!</p> -->
+<div *ngIf="showModal">
+    <!-- <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showModal}" style="display: block;" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Set Target Calories</h5>
+              <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="targetCalorieForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="targetCalories">Target Calories</label>
+                  <input type="number" class="form-control" id="targetCalories" formControlName="targetCalories" placeholder="Enter your target calories">
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showModal}" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Set Target Calories</h5>
+              <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="targetCalorieForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <!-- <label for="targetCalories">Target Calories</label> -->
+                  <input type="number" class="form-control" id="targetCalories" formControlName="targetCalories" placeholder="Enter your target calories">
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+  

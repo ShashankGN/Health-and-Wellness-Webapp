@@ -1,0 +1,226 @@
+<!-- <p>cmptargetcalorie works!</p> -->
+
+<!-- Hero Section -->
+<div class="container-fluid hero-section text-center">
+    <div class="container">
+        <h1>Meal plan per Day/Week</h1>
+        <p>Generate meal plan per day/week based on the target calories you want to achieve.</p>
+    </div>
+</div>
+
+<!-- Recipe Query Form -->
+<div *ngIf="showRequest" class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="form-container">
+                <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label for="timeFrame" class="form-label">Time Frame (required)</label>
+                        <select class="form-select" id="timeFrame" formControlName="timeFrame" required>
+                            <option value="">Select a time frame</option>
+                            <option *ngFor="let option of timeFrameOptions" [value]="option">{{ option }}</option>
+                        </select>
+                        <div *ngIf="recipeForm.get('timeFrame')?.invalid && recipeForm.get('timeFrame')?.touched"
+                            class="text-danger">
+                            Time Frame is required.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="targetCalories" class="form-label">Target Calories (required)</label>
+                        <input type="number" class="form-control" id="targetCalories" formControlName="targetCalories"
+                            placeholder="Enter target calories" min="1" required>
+                        <div *ngIf="recipeForm.get('targetCalories')?.invalid && recipeForm.get('targetCalories')?.touched"
+                            class="text-danger">
+                            Target Calories is required and must be valid.
+                        </div>
+                        <div *ngIf="targetCaloriesInvalid" class="text-danger">
+                            Target Calories must be less than or equal to 2000 (Day) or 18000 (Week).
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="diet" class="form-label">Diet</label>
+                        <select class="form-select" id="diet" formControlName="diet">
+                            <option value="">Select a diet</option>
+                            <option *ngFor="let option of dietOptions" [value]="option">{{ option }}</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exclude" class="form-label">Exclude</label>
+                        <input type="text" class="form-control" id="exclude" formControlName="exclude"
+                            placeholder="e.g., Olives">
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg w-100"
+                            [disabled]="recipeForm.invalid">Submit Query</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="mealTimeFrameDay">
+    <div class="container features-section">
+
+        <div *ngIf="showResponse">
+            <div class="container mb-4">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="alert alert-light">
+                      <h3 class="mb-3 text-center" style="color: #d9534f;">Nutritional Information</h3>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="card mb-3" style="border-color: #d9534f; text-align: center;">
+                            <div class="card-header" style="background-color: #f8d7da; color: #d9534f;">
+                              Calories
+                            </div>
+                            <div class="card-body">
+                              <h4 class="card-title" style="color: #d9534f;">{{ nutrientsDay.calories }} kcal</h4>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="card mb-3" style="border-color: #d9534f; text-align: center;">
+                            <div class="card-header" style="background-color: #f8d7da; color: #d9534f;">
+                              Protein
+                            </div>
+                            <div class="card-body">
+                              <h4 class="card-title" style="color: #d9534f;">{{ nutrientsDay.protein }} g</h4>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="card mb-3" style="border-color: #d9534f; text-align: center;">
+                            <div class="card-header" style="background-color: #f8d7da; color: #d9534f;">
+                              Fat
+                            </div>
+                            <div class="card-body">
+                              <h4 class="card-title"  style="color: #d9534f; ">{{ nutrientsDay.fat }} g</h4>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="card mb-3" style="border-color: #d9534f; text-align: center;">
+                            <div class="card-header" style="background-color: #f8d7da; color: #d9534f;">
+                              Carbohydrates
+                            </div>
+                            <div class="card-body">
+                              <h4 class="card-title" style="color: #d9534f;">{{ nutrientsDay.carbohydrates }} g</h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            
+            <div class="row card-container">
+                <div class="col-md-4 mb-4 d-flex" *ngFor="let recipe of recipesDay">
+                    
+                    <div class="feature-box">
+                        <img [src]="recipe.imageUrl" alt="Recipe Image" class="img-fluid mb-3">
+                        <h4>{{ recipe.title }}</h4>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" (click)="showRequestButton()">Search again</button>
+        </div>
+    
+    </div>
+</div>
+
+
+<div *ngIf="mealTimeFrameWeek">
+    <div class="container features-section">
+
+        <div *ngIf="showResponse">
+            <div class="row card-container" *ngFor="let recipe of recipesWeek">
+                
+
+                <div class="container mb-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="alert alert-light">
+                          <h3 class="mb-3 text-center" style="color: #d9534f;">Nutritional Information</h3>
+                          <div class="row">
+                            <!-- Displaying the day and its nutritional information -->
+                            <div class="col-md-12 mb-4">
+                              <h4 class="text-center" style="color: #d9534f;">{{ recipe.day }}</h4>
+                              <div class="row">
+                                <!-- Card for Calories -->
+                                <div class="col-md-3">
+                                  <div class="card mb-3" style="border-color: #d9534f; text-align: center;">
+                                    <div class="card-header" style="background-color: #f8d7da; color: #d9534f;">
+                                      Calories
+                                    </div>
+                                    <div class="card-body">
+                                      <h4 class="card-title" style="color: #d9534f;">{{ recipe.nutrients.calories }} kcal</h4>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Card for Protein -->
+                                <div class="col-md-3">
+                                  <div class="card mb-3" style="border-color: #d9534f; text-align: center;">
+                                    <div class="card-header" style="background-color: #f8d7da; color: #d9534f;">
+                                      Protein
+                                    </div>
+                                    <div class="card-body">
+                                      <h4 class="card-title" style="color: #d9534f;">{{ recipe.nutrients.protein }} g</h4>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Card for Fat -->
+                                <div class="col-md-3">
+                                  <div class="card mb-3" style="border-color: #d9534f; text-align: center;">
+                                    <div class="card-header" style="background-color: #f8d7da; color: #d9534f;">
+                                      Fat
+                                    </div>
+                                    <div class="card-body">
+                                      <h4 class="card-title" style="color: #d9534f;">{{ recipe.nutrients.fat }} g</h4>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Card for Carbohydrates -->
+                                <div class="col-md-3">
+                                  <div class="card mb-3" style="border-color: #d9534f; text-align: center;">
+                                    <div class="card-header" style="background-color: #f8d7da; color: #d9534f;">
+                                      Carbohydrates
+                                    </div>
+                                    <div class="card-body">
+                                      <h4 class="card-title" style="color: #d9534f;">{{ recipe.nutrients.carbohydrates }} g</h4>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                
+
+
+
+
+                <div class="col-md-4 mb-4 d-flex" *ngFor="let food of recipe.meal">
+                    <div class="feature-box">
+                        
+                        <img [src]="food.imageUrl" alt="Recipe Image" class="img-fluid mb-3">
+                        <h4>{{food.title}}</h4>
+                    </div>
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" (click)="showRequestButton()">Search again</button>
+        </div>
+    
+    </div>
+</div>

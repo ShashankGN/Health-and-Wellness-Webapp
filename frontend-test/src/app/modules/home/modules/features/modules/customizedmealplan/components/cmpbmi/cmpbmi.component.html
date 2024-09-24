@@ -1,0 +1,124 @@
+<!-- <p>cmpbmi works!</p> -->
+<!-- Hero Section -->
+<div class="container-fluid hero-section text-center">
+    <div class="container">
+        <h1>Search food based on BMI</h1>
+        <p>Refine your meal based on the BM Index.</p>
+    </div>
+</div>
+
+<!-- Form to display and take inputs -->
+<div *ngIf="showRequest" class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="form-container">
+          <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+            <!-- Name (disabled) -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+  
+            <!-- Age (disabled) -->
+            <div class="mb-3">
+              <label for="age" class="form-label">Age</label>
+              <input type="number" class="form-control" id="age" formControlName="age">
+            </div>
+  
+            <!-- Gender (disabled) -->
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <input type="text" class="form-control" id="gender" formControlName="gender">
+            </div>
+  
+            <!-- Height -->
+            <div class="mb-3">
+              <label for="height" class="form-label">Height (cm)</label>
+              <input type="number" class="form-control" id="height" formControlName="height" placeholder="Enter your height">
+            </div>
+  
+            <!-- Weight -->
+            <div class="mb-3">
+              <label for="weight" class="form-label">Weight (kg)</label>
+              <input type="number" class="form-control" id="weight" formControlName="weight" placeholder="Enter your weight">
+            </div>
+
+            <div class="mb-3">
+                <label for="number" class="form-label">Number of foods</label>
+                <input type="number" class="form-control" id="number" formControlName="number" placeholder="Enter number of food items">
+              </div>
+  
+            <!-- Activity Level -->
+            <div class="mb-3">
+              <label for="activityLevel" class="form-label">Activity Level</label>
+              <select class="form-select" id="activityLevel" formControlName="activityLevel">
+                <option value="">Select your activity level</option>
+                <option *ngFor="let level of activityLevels" [value]="level">{{ level }}</option>
+              </select>
+            </div>
+  
+            <!-- Submit button -->
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="recipeForm.invalid">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container features-section">
+    
+    <div *ngIf="showResponse">
+        <div class="row card-container">
+            
+            <div class="col-md-4 mb-4 d-flex" *ngFor="let recipe of recipes">
+                <div class="feature-box">
+                    <img [src]="recipe.image" alt="Recipe Image" class="img-fluid mb-3">
+                    <h4>{{ recipe.title }}</h4>
+                    <h6>Calories:{{recipe.calories}}</h6>
+                    <h6>Carbs:{{recipe.carbs}}</h6>
+                    <h6>Protein:{{recipe.protein}}</h6>
+                    <h6>Fat:{{recipe.fat}}</h6>
+                    
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" (click)="showRequestButton()">Search again</button>
+    </div>
+    
+    </div> -->
+
+    <div class="container features-section">
+        <div *ngIf="showResponse">
+          <div class="row card-container">
+            <div class="col-md-4 mb-4 d-flex" *ngFor="let recipe of recipes">
+              <div class="feature-box">
+                <img [src]="recipe.image" alt="Recipe Image" class="img-fluid mb-3">
+                <h4>{{ recipe.title }}</h4>
+                <div class="nutrients-container">
+                  <div class="nutrient">
+                    <h6>Calories:</h6>
+                    <p>{{ recipe.calories }} kcal</p>
+                  </div>
+                  <div class="nutrient">
+                    <h6>Carbs:</h6>
+                    <p>{{ recipe.carbs }} g</p>
+                  </div>
+                  <div class="nutrient">
+                    <h6>Protein:</h6>
+                    <p>{{ recipe.protein }} g</p>
+                  </div>
+                  <div class="nutrient">
+                    <h6>Fat:</h6>
+                    <p>{{ recipe.fat }} g</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" (click)="showRequestButton()">Search again</button>
+        </div>
+      </div>
+      
+  

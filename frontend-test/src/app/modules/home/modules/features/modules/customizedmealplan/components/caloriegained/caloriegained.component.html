@@ -1,0 +1,76 @@
+<!-- <p>caloriegained works!</p> -->
+
+<app-targetgaincaloriemodal></app-targetgaincaloriemodal>
+
+<!-- <p>calorieburnt works!</p> -->
+<div class="container-fluid hero-section text-center">
+    <div class="container">
+      <h1>Get Calories Gained based on the food items/ingredients</h1>
+      <p>Calculate the calories gained based on the food items consumed or ingredients with quantity.</p>
+    </div>
+  </div>
+  
+  <!-- Form to display and take inputs -->
+  <div *ngIf="showRequest" class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="form-container">
+          <form [formGroup]="calorieGainedForm" (ngSubmit)="onSubmit()">
+  
+  
+  
+  
+            <div class="mb-3">
+              <label for="ingredient" class="form-label">Food/Ingredient</label>
+              <input type="text" class="form-control" id="ingredient" formControlName="ingredient"
+                placeholder="ex. 1 banana,1 cup rice,1 pizza">
+            </div>
+  
+  
+            <!-- Submit button -->
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="calorieGainedForm.invalid">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Display Results -->
+  <div *ngIf="showResponse" class="container mt-5">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ calorieGainedFormData.ingredient }}</h5>
+            <p class="card-text">Calories gained: {{ calorieGainedResult }}</p>
+  
+            <!-- Input field for the name of the food -->
+            <div class="form-group">
+              <label for="foodName">Food Name:</label>
+              <input type="text" class="form-control" id="foodName" [(ngModel)]="foodName">
+            </div>
+  
+            <button class="btn btn-primary mt-2" (click)="AddtoList()">Add Data</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg" (click)="showRequestButton()">Search again</button>
+  </div>
+  
+
+  <div *ngIf="showList" class="container mt-5">
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let activity of exportdata.FoodItems">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ activity.Name }}</h5>
+            <p class="card-text">Calories Gained: {{ activity.GainedCalories}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg" (click)="exportData()">Save data</button>
+  </div>

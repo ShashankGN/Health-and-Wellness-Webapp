@@ -1,0 +1,237 @@
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" routerLink="home">FITNET</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="./login">Start</a></li> -->
+                    <!-- <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="">About</a></li> -->
+                    <!-- <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="./features">Features</a></li> -->
+                    <!-- <li class="nav-item" routerLinkActive="active"><a class="nav-link" href="#">Pricing</a></li> -->
+                    <!-- <li class="nav-item" routerLinkActive="active"><a class="nav-link" href="#">Blog</a></li> -->
+                    <!-- <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="./contact">Contact Us</a></li> -->
+
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light" routerLink="register">Register</a>
+                    </li> 
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light"  routerLink="login">Log In</a>
+                    </li>
+                    <!-- <a class="nav-link btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#signUpModal">Register</a>
+                    <a class="nav-link btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">Log
+                        In</a> -->
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <!-- Hero Section -->
+        <div class="container-fluid hero-section text-center">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-md-start">
+                        <h1>Welcome to FITNET!</h1>
+                        <p>Your trusted companion for achieving a healthier lifestyle. Discover personalized diet plans,
+                            workout routines, and mental wellness strategies tailored just for you.</p>
+                        <button class="btn btn-primary btn-lg" routerLink="login">Join Our Personalized Nutrition Demo
+                            For Free</button>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://www.socialpositives.com/wp-content/uploads/2021/02/Wellness-app-1-scaled.jpg" alt="Hero Image" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Login Modal -->
+        <!-- <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="loginModalLabel">FITNET</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <app-login></app-login> 
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- Login Modal -->
+        <!-- <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="signUpModalLabel">FITNET</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <app-register></app-register> 
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+
+
+
+        <!-- Features Section -->
+        <div class="container features-section">
+            <div class="text-center mb-5">
+                <h2>Features</h2>
+                <p>Explore the various features we offer to support your health and wellness journey.</p>
+            </div>
+            <div class="row card-container">
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="feature-box">
+                        <h3><a routerLink="login">Customized Nutrition Plans</a></h3>
+                        <p>Get nutrition plans tailored to your unique needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="feature-box">
+                        <h3><a routerLink="login">Workout and Exercise Plans</a></h3>
+                        <p>Access a variety of workouts suited to your goals.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="feature-box">
+                        <h3><a routerLink="login">Mental Wellness Support</a></h3>
+                        <p>Strategies and support for maintaining mental well-being.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="feature-box">
+                        <h3><a routerLink="login">Daily Healthy Living Tips</a></h3>
+                        <p>Tips for integrating healthy habits into your daily life.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="feature-box">
+                        <h3><a href="#">Personalized Diet Charts</a></h3>
+                        <p>Receive diet charts customized for your lifestyle.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="feature-box">
+                        <h3><a href="#">Nutrition Consultation Services</a></h3>
+                        <p>Consult with experts to get personalized nutrition advice.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Section -->
+        <div class="container blog-section">
+            <div class="text-center mb-5">
+                <h2>Our Blogs</h2>
+                <p>Explore the latest articles on health and wellness.</p>
+            </div>
+            <div class="row card-container">
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="blog-box">
+                        <img src="https://via.placeholder.com/300x200" alt="Blog Image" class="img-fluid mb-3">
+                        <h3>Blog Post 1</h3>
+                        <p>Discover effective strategies for a balanced lifestyle.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="blog-box">
+                        <img src="https://via.placeholder.com/300x200" alt="Blog Image" class="img-fluid mb-3">
+                        <h3>Blog Post 2</h3>
+                        <p>Learn how to stay fit while managing a busy schedule.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="blog-box">
+                        <img src="https://via.placeholder.com/300x200" alt="Blog Image" class="img-fluid mb-3">
+                        <h3>Blog Post 3</h3>
+                        <p>Get tips on maintaining mental health in daily life.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <div class="container pricing-section">
+            <div class="text-center mb-5">
+                <h2>Pricing</h2>
+                <p>Choose the plan that best suits your needs.</p>
+            </div>
+            <div class="row card-container">
+                <div class="col-md-6 mb-4 d-flex">
+                    <div class="pricing-box">
+                        <h3>Basic</h3>
+                        <p><strong>Free</strong></p>
+                        <ul>
+                            <li>Access to limited content</li>
+                            <li>Weekly health tips</li>
+                            <li>Basic nutrition plans</li>
+                        </ul>
+                        <button class="btn btn-primary">Get Started</button>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 d-flex">
+                    <div class="pricing-box">
+                        <h3>Premium</h3>
+                        <p><strong>$29.99/month</strong></p>
+                        <ul>
+                            <li>Unlimited access to all content</li>
+                            <li>Daily health tips</li>
+                            <li>Advanced nutrition and workout plans</li>
+                            <li>1-on-1 consultations with experts</li>
+                        </ul>
+                        <button class="btn btn-primary">Choose Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Us Section -->
+        <div class="container choose-section">
+            <div class="text-center mb-5">
+                <h2>Why Choose Us?</h2>
+                <p>Learn why thousands trust FITNET for their health journey.</p>
+            </div>
+            <div class="row card-container">
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="choose-box">
+                        <h3>Expert Guidance</h3>
+                        <p>Our team of professionals provides the best advice tailored to your needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="choose-box">
+                        <h3>Comprehensive Plans</h3>
+                        <p>We offer holistic plans covering diet, exercise, and mental well-being.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 d-flex">
+                    <div class="choose-box">
+                        <h3>Proven Success</h3>
+                        <p>Thousands have achieved their health goals with our expert support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2024 FITNET. All Rights Reserved.</p>
+            <div>
+                <a routerLink="">Privacy Policy</a>
+                <a routerLink="">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>

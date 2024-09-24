@@ -1,0 +1,176 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" routerLink="home">FITNET</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="./start">Start</a></li>
+                <li class="nav-item" routerLinkActive="active"><a class="nav-link" href="#">About</a></li>
+                <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="./features">Features</a></li>
+                <li class="nav-item" routerLinkActive="active"><a class="nav-link" href="#">Pricing</a></li>
+                <li class="nav-item" routerLinkActive="active"><a class="nav-link" href="#">Blog</a></li>
+                <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="./contact">Contact Us</a></li>
+                
+                <li class="nav-item"><a class="nav-link btn btn-outline-light" (click)="logout()" routerLink="">Sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav> -->
+
+<!-- <li class="nav-item"><a class="nav-link" routerLink="login">Login</a></li> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" routerLink="home">FITNET</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="./start">Start</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="./features">Features</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="./contact">Contact Us</a>
+                </li>
+                <!-- <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link">
+                        <i class="fas fa-user"></i> {{username}}
+                    </a>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> {{username}}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#updateProfileModal">Update Profile</a></li>
+                        <li><a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete Profile</a></li>
+                        <li><a class="dropdown-item" href="#" (click)="logout()">Sign Out</a></li>
+                    </ul>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link btn btn-outline-light" (click)="logout()" routerLink="">Sign Out</a>
+                </li> -->
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle no-arrow" href="#" id="moreMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v" style="
+                        margin-top: 3px;
+                    "></i> 
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreMenu">
+                        <li><a class="dropdown-item" href="#" routerLink="./update-profile">Update Profile</a></li>
+                        <li><a class="dropdown-item" href="#" >Delete Profile</a></li>
+                        <li><a class="dropdown-item" href="#" (click)="logout()">Sign Out</a></li>
+                    </ul>
+                </li> -->
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your profile? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" (click)="Delete()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="updateProfileModal" tabindex="-1" aria-labelledby="updateProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateProfileModalLabel">Update Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateUserForm" >
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" formControlName="FullName">
+                        <!-- <div *ngIf="updateUserForm.get('FullName')?.invalid && (updateUserForm.get('FullName')?.dirty || updateUserForm.get('FullName')?.touched)" class="text-danger">
+                            Full Name is required.
+                        </div> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="userName" class="form-label">User Name</label>
+                        <input type="text" class="form-control" id="userName" formControlName="UserName">
+                        <!-- <div *ngIf="updateUserForm.get('UserName')?.invalid&& (updateUserForm.get('UserName')?.dirty || updateUserForm.get('UserName')?.touched)" class="text-danger">
+                            User Name is required.
+                        </div> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" formControlName="Email">
+                        <!-- <div *ngIf="updateUserForm.get('Email')?.invalid && (updateUserForm.get('Email')?.dirty || updateUserForm.get('Email')?.touched)" class="text-danger">
+                            <div *ngIf="updateUserForm.get('Email')?.errors?.['required']">Email is required.</div>
+                            <div *ngIf="updateUserForm.get('Email')?.errors?.['email']">Invalid email format.</div>
+                        </div> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" formControlName="Password">
+                        <!-- <div *ngIf="updateUserForm.get('Password')?.invalid && (updateUserForm.get('Password')?.dirty || updateUserForm.get('Password')?.touched)" class="text-danger">
+                            Password is required.
+                        </div> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Gender</label>
+                        <select class="form-select" id="gender" formControlName="Gender">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <!-- <div *ngIf="updateUserForm.get('Gender')?.invalid && (updateUserForm.get('Gender')?.dirty || updateUserForm.get('Gender')?.touched)" class="text-danger">
+                            Gender is required.
+                        </div> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" class="form-control" id="age" formControlName="Age">
+                        <!-- <div *ngIf="updateUserForm.get('Age')?.invalid && (updateUserForm.get('Age')?.dirty || updateUserForm.get('Age')?.touched)" class="text-danger">
+                            <div *ngIf="updateUserForm.get('Age')?.errors?.['required']">Age is required.</div>
+                            <div *ngIf="updateUserForm.get('Age')?.errors?.['min']">Age must be a positive number.</div>
+                        </div> -->
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="updateUserForm.invalid" (click)="onSubmit()">Update</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+body {
+    /* font-family: 'Roboto', sans-serif; */
+    background-color: #f4f6f8;
+    color: #333;
+}
+/* Style for the required field indicator (red star) */
+.text-danger {
+    color: red;
+    font-weight: bold;
+}
+h4{
+    color: #2d4059;
+}
+.navbar {
+    background-color: #2d4059;
+}
+.navbar-brand, .nav-link {
+    color: #f4f6f8 !important;
+}
+.nav-link.btn {
+    color: #ea5455 !important;
+    border: 2px solid #ea5455;
+}
+.nav-link.btn:hover {
+    background-color: #ea5455;
+    color: #fff !important;
+}
+.btn-primary {
+    background-color: #ea5455;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #d43f40;
+}
+.hero-section {
+    background: linear-gradient(to right, #f4f6f8, #ea5455);
+    color: #2d4059;
+    padding: 60px 0;
+}
+.hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+.form-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin: 20px 0;
+}
+.form-container label {
+    font-weight: bold;
+    color: #2d4059;
+}
+.custom-switch .form-check-input {
+    cursor: pointer;
+}
+.collapse {
+    margin-top: 20px;
+}
+.footer {
+    background-color: #2d4059;
+    color: #f4f6f8;
+    padding: 20px 0;
+}
+.footer a {
+    color: #ea5455;
+    margin-right: 15px;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: #d43f40;
+}
+
+
+
+.features-section, .pricing-section, .choose-section, .blog-section {
+    padding: 60px 0;
+}
+.feature-box, .pricing-box, .blog-box, .choose-box {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-box:hover, .pricing-box:hover, .blog-box:hover, .choose-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+.feature-box h3, .pricing-box h3, .blog-box h3, .choose-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #2d4059;
+}
+.feature-box a, .blog-box a {
+    color: #ea5455;
+    text-decoration: none;
+}
+.feature-box a:hover, .blog-box a:hover {
+    text-decoration: underline;
+}
+/* Ensure equal height for feature, pricing, and blog boxes */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-container .col-md-4 {
+    display: flex;
+}
+.card-container .feature-box,
+.card-container .pricing-box,
+.card-container .blog-box,
+.card-container .choose-box {
+    flex: 1;
+}

@@ -1,0 +1,86 @@
+<app-targetcaloriemodal></app-targetcaloriemodal>
+
+<!-- <p>calorieburnt works!</p> -->
+<div class="container-fluid hero-section text-center">
+  <div class="container">
+    <h1>Get Calories burnt based on the Activity</h1>
+    <p>Calculate the calories burned based on the activity performed and the duration of the exercise.</p>
+  </div>
+</div>
+
+<!-- Form to display and take inputs -->
+<div *ngIf="showRequest" class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="form-container">
+        <form [formGroup]="exerciseForm" (ngSubmit)="onSubmit()">
+
+
+
+
+          <div class="mb-3">
+            <label for="activity" class="form-label">Activity</label>
+            <input type="text" class="form-control" id="activity" formControlName="activity"
+              placeholder="ex. cycling, swimming, running">
+          </div>
+
+
+          <!-- Submit button -->
+          <div class="mt-4">
+            <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="exerciseForm.invalid">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Display Results -->
+
+<!-- Display Results -->
+<div *ngIf="showResponse" class="container mt-5">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let activity of activityResult">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ activity.name }}</h5>
+          <p class="card-text">Calories per hour: {{ activity.calories_per_hour }}</p>
+
+          <!-- Dropdown button -->
+          <button class="btn btn-secondary" (click)="toggleDetails(activity.id)">
+            {{ activity.isDetailsVisible ? 'Hide Details' : 'Show Details' }}
+          </button>
+
+          <!-- Dropdown details -->
+          <div [ngClass]="{'details-dropdown': true, 'show': activity.isDetailsVisible}" class="mt-3">
+            <div class="form-group">
+              <label for="duration{{activity.id}}">Duration (minutes):</label>
+              <input type="number" id="duration{{activity.id}}" class="form-control"
+                [(ngModel)]="activity.duration_minutes"
+                (ngModelChange)="updateTotalCaloriesBurnt(activity)">
+            </div>
+            <p>Calories per hour: {{ activity.calories_per_hour }}</p>
+            <p>Total Calories Burnt: {{ activity.total_calories }}</p>
+            <!-- Save Data Button inside the details-dropdown div -->
+            <button class="btn btn-primary mt-2" (click)="AddtoList(activity.id)">Add Data</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg" (click)="showRequestButton()">Search again</button>
+</div>
+
+<div *ngIf="showList" class="container mt-5">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let activity of exportdata.Activities">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ activity.Name }}</h5>
+          <p class="card-text">Calories Burnt: {{ activity.BurntCalories}}</p>
+          <p class="card-text">Hours Spent: {{ activity.HoursSpent }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg" (click)="exportData()">Save data</button>
+</div>

@@ -1,0 +1,183 @@
+<!-- <p>cmprecipe works!</p> -->
+
+<body>
+
+</body>
+<!-- Hero Section -->
+<div class="container-fluid hero-section text-center">
+    <div class="container">
+        <h1>Search Recipes</h1>
+        <p>Refine your search for the best recipes with detailed preferences.</p>
+    </div>
+</div>
+
+
+<!-- Recipe Query Form -->
+<!-- Recipe Query Form -->
+<div *ngIf="showRequest" class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="form-container">
+                <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label for="query" class="form-label">Query <span *ngIf="isRequired('query')"
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="query" formControlName="query"
+                            placeholder="Enter your recipe query" required>
+                        <div *ngIf="recipeForm.get('query')?.invalid && recipeForm.get('query')?.touched"
+                            class="text-danger">
+                            Query is required.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="number" class="form-label">Number of Results <span *ngIf="isRequired('number')"
+                                class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="number" formControlName="number" min="1"
+                            placeholder="Enter number of results" required>
+                        <div *ngIf="recipeForm.get('number')?.invalid && recipeForm.get('number')?.touched"
+                            class="text-danger">
+                            Number is required
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="advancedFiltersToggle"
+                                (change)="toggleAdvancedFilters()">
+                            <label class="form-check-label" for="advancedFiltersToggle">Show Advanced Filters</label>
+                        </div>
+
+                        <!-- Show advanced filters section conditionally -->
+                        <div *ngIf="showAdvancedFilters" class="mt-3">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="cuisine" class="form-label">Cuisine</label>
+                                    <input type="text" class="form-control" id="cuisine" formControlName="cuisine"
+                                        placeholder="e.g., Italian, Mexican" (blur)="validateCuisine()">
+                                    <div *ngIf="cuisineInvalid" class="text-danger">
+                                        Cuisine should not be the same as Exclude Cuisine.
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="excludeCuisine" class="form-label">Exclude Cuisine</label>
+                                    <input type="text" class="form-control" id="excludeCuisine"
+                                        formControlName="excludeCuisine" placeholder="e.g., Chinese">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="diet" class="form-label">Diet</label>
+                                    <select class="form-select" id="diet" formControlName="diet">
+                                        <option value="">Select a diet</option>
+                                        <option *ngFor="let option of dietOptions" [value]="option">{{ option }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="type" class="form-label">Type</label>
+                                    <select class="form-select" id="type" formControlName="type">
+                                        <option value="">Select a type</option>
+                                        <option *ngFor="let option of typeOptions" [value]="option">{{ option }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <!-- Carbs -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="minCarbs" class="form-label">Min Carbs (g)</label>
+                                    <input type="number" class="form-control" id="minCarbs" formControlName="minCarbs"
+                                        placeholder="Minimum carbs">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="maxCarbs" class="form-label">Max Carbs (g)</label>
+                                    <input type="number" class="form-control" id="maxCarbs" formControlName="maxCarbs"
+                                        placeholder="Maximum carbs">
+                                    <div *ngIf="maxCarbsLessThanMinCarbs" class="text-danger">
+                                        Max Carbs should be greater than or equal to Min Carbs.
+                                    </div>
+                                </div>
+
+                                <!-- Calories -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="minCalories" class="form-label">Min Calories</label>
+                                    <input type="number" class="form-control" id="minCalories"
+                                        formControlName="minCalories" placeholder="Minimum calories">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="maxCalories" class="form-label">Max Calories</label>
+                                    <input type="number" class="form-control" id="maxCalories"
+                                        formControlName="maxCalories" placeholder="Maximum calories">
+                                    <div *ngIf="maxCaloriesLessThanMinCalories" class="text-danger">
+                                        Max Calories should be greater than or equal to Min Calories.
+                                    </div>
+                                </div>
+
+                                <!-- Fat -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="minFat" class="form-label">Min Fat (g)</label>
+                                    <input type="number" class="form-control" id="minFat" formControlName="minFat"
+                                        placeholder="Minimum fat">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="maxFat" class="form-label">Max Fat (g)</label>
+                                    <input type="number" class="form-control" id="maxFat" formControlName="maxFat"
+                                        placeholder="Maximum fat">
+                                    <div *ngIf="maxFatLessThanMinFat" class="text-danger">
+                                        Max Fat should be greater than or equal to Min Fat.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="recipeForm.invalid">Submit Query</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container features-section">
+    
+<div *ngIf="showResponse">
+    <div class="row card-container">
+        
+        <div class="col-md-4 mb-4 d-flex" *ngFor="let recipe of recipes">
+            <div class="feature-box">
+                <img [src]="recipe.image" alt="Recipe Image" class="img-fluid mb-3">
+                <h4>{{ recipe.title }}</h4>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg" (click)="showRequestButton()">Search again</button>
+</div>
+
+</div>
+
+<!-- Recipe Cards Section -->
+<!-- <div *ngIf="showResponse">
+    
+    <div class="container-fluid hero-section text-center">
+        <div class="container">
+            <h1>Recipe Cards</h1>
+            <p>Explore a selection of delicious recipes tailored to your preferences.</p>
+        </div>
+    </div>
+    <div class="container features-section">
+        <div class="row card-container">
+            <div class="col-md-4 mb-4 d-flex" *ngFor="let recipe of recipes">
+                <div class="feature-box">
+                    <img [src]="recipe.image" alt="Recipe Image" class="img-fluid mb-3">
+                    <h3><a [routerLink]="['/recipe', recipe.id]">{{ recipe.title }}</a></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<!-- <router-outlet></router-outlet> -->

@@ -1,0 +1,86 @@
+<!-- <p>customizedexercise works!</p> -->
+<!-- Hero Section -->
+<div class="container-fluid hero-section text-center">
+    <div class="container">
+        <h1>Search exercises based on the body parts</h1>
+        <p>Refine your exercises focused on the body parts.</p>
+    </div>
+</div>
+
+<!-- Form to display and take inputs -->
+<div *ngIf="showRequest" class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="form-container">
+          <form [formGroup]="exerciseForm" (ngSubmit)="onSubmit()">
+           
+  
+    
+            <div class="mb-3">
+                <label for="bodypart" class="form-label">Body Part</label>
+                <select class="form-select" id="bodypart" formControlName="bodypart">
+                  <option value="">Select your activity level</option>
+                  <option *ngFor="let level of bodyParts" [value]="level">{{ level }}</option>
+                </select>
+              </div>
+        
+            <div class="mb-3">
+                <label for="number" class="form-label">Number of exercises</label>
+                <input type="number" class="form-control" id="number" formControlName="number" placeholder="Enter number of exercises">
+              </div>
+  
+  
+            <!-- Submit button -->
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary btn-lg w-100" [disabled]="exerciseForm.invalid">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container features-section">
+    <div *ngIf="showResponse">
+      <div class="row card-container">
+        <div class="col-md-4 mb-4 d-flex" *ngFor="let recipe of recipes">
+          <div class="feature-box">
+            <img [src]="recipe.gifUrl" alt="Exercise GIF" class="img-fluid mb-3">
+            <h4>{{ recipe.name }}</h4>
+            <button class="btn btn-primary" (click)="openModal(recipe)">See Description</button>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" (click)="showRequestButton()">Search again</button>
+    </div>
+  
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" role="dialog" *ngIf="selectedRecipe">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ selectedRecipe.name }}</h5>
+            <button type="button" class="close" (click)="closeModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Body Part:</strong> {{ selectedRecipe.bodyPart }}</p>
+            <p><strong>Equipment:</strong> {{ selectedRecipe.equipment }}</p>
+            <p><strong>Target:</strong> {{ selectedRecipe.target }}</p>
+            <p><strong>Secondary Muscles:</strong> {{ selectedRecipe.secondaryMuscles.join(', ') }}</p>
+            <p><strong>Instructions:</strong></p>
+            <ul>
+              <li *ngFor="let instruction of selectedRecipe.instructions">{{ instruction }}</li>
+            </ul>
+            <img [src]="selectedRecipe.gifUrl" alt="Exercise GIF" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

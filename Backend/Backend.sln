@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{54D75D6E-4041-4F52-BAA7-CCBD1E43AB7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3A0DAE9C-85AC-42ED-B32B-537FDFDF7A37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F09D0C3A-3C4F-437D-9BD1-B9A653552DB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{8DEF8EF5-F3E3-4FD1-8EFD-FA7C82BE87FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.API", "src\Services\Authentication\Authentication.API\Authentication.API.csproj", "{B9BA64FC-8E17-4CA3-AD34-BB291CB15AF1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spoonacular", "Spoonacular", "{F6EED169-0182-4DE8-B473-D2022F12D4DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spoonacular.API", "Spoonacular.API\Spoonacular.API.csproj", "{34B4F91A-47C6-42EB-A947-CD534B0A2C36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9BA64FC-8E17-4CA3-AD34-BB291CB15AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9BA64FC-8E17-4CA3-AD34-BB291CB15AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9BA64FC-8E17-4CA3-AD34-BB291CB15AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9BA64FC-8E17-4CA3-AD34-BB291CB15AF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B4F91A-47C6-42EB-A947-CD534B0A2C36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B4F91A-47C6-42EB-A947-CD534B0A2C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B4F91A-47C6-42EB-A947-CD534B0A2C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B4F91A-47C6-42EB-A947-CD534B0A2C36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3A0DAE9C-85AC-42ED-B32B-537FDFDF7A37} = {54D75D6E-4041-4F52-BAA7-CCBD1E43AB7F}
+		{F09D0C3A-3C4F-437D-9BD1-B9A653552DB2} = {54D75D6E-4041-4F52-BAA7-CCBD1E43AB7F}
+		{8DEF8EF5-F3E3-4FD1-8EFD-FA7C82BE87FC} = {3A0DAE9C-85AC-42ED-B32B-537FDFDF7A37}
+		{B9BA64FC-8E17-4CA3-AD34-BB291CB15AF1} = {8DEF8EF5-F3E3-4FD1-8EFD-FA7C82BE87FC}
+		{F6EED169-0182-4DE8-B473-D2022F12D4DE} = {3A0DAE9C-85AC-42ED-B32B-537FDFDF7A37}
+		{34B4F91A-47C6-42EB-A947-CD534B0A2C36} = {F6EED169-0182-4DE8-B473-D2022F12D4DE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {71FF7F66-C65A-49E8-8EEE-702FDA394A2D}
+	EndGlobalSection
+EndGlobal
