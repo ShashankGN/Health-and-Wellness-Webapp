@@ -112,6 +112,43 @@ export class HeaderComponent {
     this.authservice.updateUser(this.id,this.updateUserFormData).subscribe({
       next:(data:any)=>{
         console.log(data);
+        if(data.status==="UserFailed")
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'Update Failed!',
+            text: 'Username or Email already exists. Please try again.',
+            timer: 3000,
+            timerProgressBar: false,
+            showConfirmButton: false,
+            customClass: {
+              confirmButton: 'custom-confirm-button'
+            }
+          });
+        }
+        else{
+          Swal.fire({
+            icon: 'success',
+            title: `Profile updated!`,
+            text: 'Please login again.',
+            timer: 3000,
+            timerProgressBar: false,
+            showConfirmButton: false,
+            customClass: {
+              confirmButton: 'custom-confirm-button'
+            }
+          });
+
+
+          // this.modalService.dismissAll();
+        // this.cd.detectChanges();
+        this.authservice.logout();
+
+        setTimeout(() => {
+          window.location.reload();
+      }, 3000); // Adjust delay as needed
+        }
+
       },
       error:(error)=>{
         console.log("error in",error);
@@ -119,24 +156,11 @@ export class HeaderComponent {
       complete:()=>{
         
         console.log("user updated successfully!");
-        Swal.fire({
-          icon: 'success',
-          title: `Profile updated!`,
-          text: 'Please login again.',
-          timer: 3000,
-          timerProgressBar: false,
-          showConfirmButton: false,
-          customClass: {
-            confirmButton: 'custom-confirm-button'
-          }
-        });
-        // this.modalService.dismissAll();
-        // this.cd.detectChanges();
-        this.authservice.logout();
+        
 
-        setTimeout(() => {
-          window.location.reload();
-      }, 3000); // Adjust delay as needed
+        
+        
+        
         
       }
     })
